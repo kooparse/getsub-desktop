@@ -1,0 +1,38 @@
+.toggle {
+  position: absolute;
+  opacity: 0;
+  outline: none;
+  top: 25px;
+  right: -15px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 90px;
+  padding: 6.5px 20px 5.5px 15px;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+:global(body):hover .toggle {
+  opacity: 1;
+}
+
+.rotate {
+  display: flex;
+  transition: all .35s;
+}
+
+.rotate-left {
+  composes: rotate;
+  transform: rotate(0deg);
+}
+
+.rotate-right {
+  composes: rotate;
+  transform: rotate(180deg);
+}
+
+.cercle {
+  color: #304650;
+  font-size: 20px;
+}

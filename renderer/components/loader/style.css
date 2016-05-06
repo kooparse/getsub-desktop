@@ -1,0 +1,42 @@
+@keyframes loader {
+  0% { left: 4px; }
+  50% { left: 104px; }
+  97% { left: 4px; }
+}
+
+.container {
+  max-height: 50px;
+  transition: max-height .2s;
+}
+
+.container-hidden {
+  composes: container;
+  max-height: 0px;
+}
+
+.loader {
+  position: relative;
+  width: 130px;
+  height: 20px;
+  background: #E26A6A;
+  border-radius: 10px;
+  margin: 15px auto 15px;
+  transition: margin-top .3s ease-in-out;
+}
+
+.loader::after {
+  position: absolute;
+  animation: loader .6s infinite ease;
+  background: #fff;
+  border-radius: 8px;
+  content: '';
+  top: 3.5px;
+  left: 4px;
+  width: 20px;
+  height: 14px;
+}
+
+.loader-hidden {
+  composes: loader;
+  margin-top: -35px;
+}

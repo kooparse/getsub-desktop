@@ -1,0 +1,32 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 25px auto;
+  color: #304650;
+}
+
+.section:first-of-type {
+  margin-top: 15px;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.description {
+  margin: 5px 0px 18px;
+}
+
+.select {
+  padding: 0px 0px 15px;
+  width: 500px;
+  color: #304650;
+  border-bottom: 5px solid currentColor;
+}
+
+.label {
+  margin-right: 10px;
+}

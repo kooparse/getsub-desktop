@@ -1,0 +1,79 @@
+.dashed {
+  flex: 1;
+  color: rgb(102, 118, 128);
+  position: relative;
+  height: 100%;
+  border: 4px dashed;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 0.25em 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.dashed-highlighted {
+  composes: dashed;
+  color: #E26A6A;
+}
+
+.drop {
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ height: 100%;
+ top: 0;
+ left: 0; right: 0;
+}
+
+.inner-dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.icon {
+  color: #304650;
+  font-size: 100px;
+  margin: 0px 25px;
+}
+.text {
+  color: rgb(102, 118, 128);
+  font-size: 16px;
+  font-weight: 300;
+  margin: 10px 0px
+}
+
+.settings {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  transition: .2s opacity;
+}
+.settings:hover {
+  opacity: 0.9;
+}
+
+.trigger {
+  margin: 0px 8px 0px;
+  padding: 15px 35px;
+  outline: none;
+  color: #304650;
+  font-size: 14px;
+  border-radius: 90px;
+  background-color: transparent;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.trigger:hover {
+  color: #fff;
+  background-color: #304650;
+  border-color: #304650;
+}
