@@ -3,6 +3,44 @@ const os = new OS()
 
 
 /**
+ * Init function
+ *
+ * @param {Object} File object containing our file path and name
+ * @param {String} Search language filter
+ * @param {Array} List of subtitles
+ */
+export default async (file, lang) => {
+  const computedHash = await computeHash(file.path)
+  const movieHash = await checkMovieHash([computedHash])
+  const token = await login()
+  let query = [{sublanguageid: lang, query: file.name}]
+
+  let subtitles = (await searchSubtitles(token, query))
+    .filter((subtitle) => {
+      return subtitle.SubDownloadLink
+        && subtitle.IDSubtitleFile
+        && subtitle.SubFileName
+        && subtitle.MovieReleaseName
+    })
+    .map((subtitle) => {
+      /* we want to remove .zip ext to directly download .srt */
+      let downloadLink = subtitle.SubDownloadLink
+      downloadLink = downloadLink.substring(0, downloadLink.length - 3)
+
+      return {
+        provider: 'opensubtitle',
+        id: subtitle.IDSubtitleFile,
+        subtitleName: subtitle.SubFileName,
+        fileName: subtitle.MovieReleaseName,
+        downloadLink
+      }
+    })
+
+  return subtitles
+}
+
+
+/**
  * Bind opensubtitles computeHash method
  *
  * @param {String} File's path
@@ -64,12 +102,4 @@ const searchSubtitles = async (token, query) => {
       else resolve(res.data)
     }, token, query)
   })
-}
-
-
-export {
-  computeHash,
-  checkMovieHash,
-  searchSubtitles,
-  login
 }

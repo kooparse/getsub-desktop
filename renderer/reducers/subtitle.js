@@ -24,7 +24,7 @@ export default function (state = defaultState, action) {
     case flow(DOWNLOAD_SUBTITLE, 'SUCCESS'):
       const list = state.list.map((arr) => {
         const subtitles = arr.subtitles.map((subtitle) => {
-          return subtitle.IDSubtitleFile === action.result.id
+          return subtitle.id === action.result.id
             ? {...subtitle, downloaded: true}
             : subtitle
         })

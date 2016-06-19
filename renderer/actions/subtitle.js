@@ -1,6 +1,6 @@
 import * as ipc from 'utils/downloader'
 import {asyncRequest, asyncSuccess, asyncFailure} from 'utils/async'
-import * as api from 'utils/opensubtitle-api'
+import * as getsub from 'utils/getsub/'
 import path from 'path'
 
 const SEARCH_SUBTITLES = 'SEARCH_SUBTITLES'
@@ -12,21 +12,9 @@ const searchSubtitles = (files) => {
     try {
       const file = files[0]
       const lang = getState().settings.lang
-      const computedHash = await api.computeHash(file.path)
-      const movieHash = await api.checkMovieHash([computedHash])
-      const token = await api.login()
+      const subtitle = await getsub.search(file, lang)
 
-      const subtitles = await api.searchSubtitles(token,
-        [{sublanguageid: lang, query: file.name}])
-
-      const obj = {
-        subtitles,
-        filePath: file.path,
-        originName: file.name,
-        originLang: lang
-      }
-
-      dispatch(asyncSuccess(SEARCH_SUBTITLES, obj))
+      dispatch(asyncSuccess(SEARCH_SUBTITLES, subtitle))
     }
     catch (err) {
       dispatch(asyncFailure(SEARCH_SUBTITLES, err))
@@ -37,16 +25,14 @@ const searchSubtitles = (files) => {
 const downloadSubtitle = (subtitle) => {
   return async function (dispatch, getState) {
     try {
-      if (!subtitle.SubDownloadLink) throw 'No Download Link'
       dispatch(asyncRequest(DOWNLOAD_SUBTITLE))
 
+      const {id, downloadLink} = subtitle
       let savingPath = getState().settings.path || subtitle.filePath
-      savingPath = `${path.dirname(savingPath)}/${subtitle.SubFileName}`
+      savingPath = `${path.dirname(savingPath)}/${subtitle.subtitleName}`
 
-      const url = subtitle.SubDownloadLink.substring(0, subtitle.SubDownloadLink.length - 3)
-
-      await ipc.downloadSubtitle(url, savingPath)
-      dispatch(asyncSuccess(DOWNLOAD_SUBTITLE, {id: subtitle.IDSubtitleFile}))
+      await ipc.downloadSubtitle(downloadLink, savingPath)
+      dispatch(asyncSuccess(DOWNLOAD_SUBTITLE, {id}))
     }
     catch (err) {
       dispatch(asyncFailure(DOWNLOAD_SUBTITLE, err))

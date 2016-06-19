@@ -30,7 +30,7 @@ export default class Panel extends React.Component {
                           styleName={subtitle.downloaded ? 'downloaded' : 'item'}
                           onClick={this.download.bind(this, subtitle, item)}
                           key={itemIndex}>
-                          {subtitle.MovieReleaseName}
+                          {subtitle.fileName}
                         </div>
                       )
                     })
