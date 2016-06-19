@@ -49,7 +49,7 @@ Getsub is an app which enables you to download your movie or TV show subtitle wi
 - `cd` to the project's location
 - run `npm install`
 - run `npm start`
-- run `npm build-dev`
+- run `npm run build-dev`
 
 
 ## Contact
