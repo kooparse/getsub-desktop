@@ -1,5 +1,8 @@
 **[IN DEVELOPMENT...]**
-<br><br><br>
+
+![preview](https://github.com/kooparse/getsub-desktop/blob/master/assets/images/preview.png?raw=true)
+
+<br><br>
 
 # Getsub Desktop
 **A better, faster, stronger way to find your subtitles.**
