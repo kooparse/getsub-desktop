@@ -1,7 +1,7 @@
 import * as ipc from 'utils/downloader'
 import {asyncRequest, asyncSuccess, asyncFailure} from 'utils/async'
 import * as getsub from 'utils/getsub/'
-import path from 'path'
+
 
 const SEARCH_SUBTITLES = 'SEARCH_SUBTITLES'
 const DOWNLOAD_SUBTITLE = 'DOWNLOAD_SUBTITLE'
@@ -28,10 +28,9 @@ const downloadSubtitle = (subtitle) => {
       dispatch(asyncRequest(DOWNLOAD_SUBTITLE))
 
       const {id, downloadLink} = subtitle
-      let savingPath = getState().settings.path || subtitle.filePath
-      savingPath = `${path.dirname(savingPath)}/${subtitle.subtitleName}`
+      const savingPath = getState().settings.path || subtitle.filePath
 
-      await ipc.downloadSubtitle(downloadLink, savingPath)
+      await ipc.downloadSubtitle(subtitle, savingPath)
       dispatch(asyncSuccess(DOWNLOAD_SUBTITLE, {id}))
     }
     catch (err) {
