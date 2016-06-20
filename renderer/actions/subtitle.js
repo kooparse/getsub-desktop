@@ -21,7 +21,7 @@ const searchSubtitles = (files) => {
        * the more appropriate subtitle
        * (always the first element)
        */
-      if (getState().settings.auto) {
+      if (getState().settings.auto && subtitle.subtitles.length) {
         dispatch(downloadSubtitle({
           ...subtitle.subtitles[0],
           filePath: subtitle.filePath,
