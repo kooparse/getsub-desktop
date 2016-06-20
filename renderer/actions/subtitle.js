@@ -15,6 +15,19 @@ const searchSubtitles = (files) => {
       const subtitle = await getsub.search(file, lang)
 
       dispatch(asyncSuccess(SEARCH_SUBTITLES, subtitle))
+
+      /**
+       * If auto mode is true we want to download
+       * the more appropriate subtitle
+       * (always the first element)
+       */
+      if (getState().settings.auto) {
+        dispatch(downloadSubtitle({
+          ...subtitle.subtitles[0],
+          filePath: subtitle.filePath,
+          originName: subtitle.originName
+        }))
+      }
     }
     catch (err) {
       dispatch(asyncFailure(SEARCH_SUBTITLES, err))
