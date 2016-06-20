@@ -48,6 +48,7 @@
   "dependencies": {
     "axios": "^0.11.0",
     "fs": "0.0.2",
+    "node-uuid": "^1.4.7",
     "normalize.css": "^4.1.1",
     "opensubtitles": "0.0.4",
     "path": "^0.12.7",

@@ -1,4 +1,5 @@
 import OS from 'opensubtitles'
+import uuid from 'node-uuid'
 const os = new OS()
 
 
@@ -29,7 +30,7 @@ export default async (file, lang) => {
 
       return {
         provider: 'opensubtitle',
-        id: subtitle.IDSubtitleFile,
+        id: uuid.v4(),
         subtitleName: subtitle.SubFileName,
         fileName: subtitle.MovieReleaseName,
         downloadLink
