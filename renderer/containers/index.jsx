@@ -1,6 +1,6 @@
-import style from './style.css'
+import './style.global.css'
 
-@CSSModules(style)
+
 export default class Base extends React.Component {
 
   render () {

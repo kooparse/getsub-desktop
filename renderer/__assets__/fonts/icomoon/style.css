@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?e5jz07');
-    src:    url('fonts/icomoon.eot?e5jz07#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?e5jz07') format('truetype'),
-        url('fonts/icomoon.woff?e5jz07') format('woff'),
-        url('fonts/icomoon.svg?e5jz07#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?i9bie7');
+    src:    url('fonts/icomoon.eot?i9bie7#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?i9bie7') format('truetype'),
+        url('fonts/icomoon.woff?i9bie7') format('woff'),
+        url('fonts/icomoon.svg?i9bie7#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -39,4 +39,9 @@
 .icon-windows8:before {
     content: "\eac2";
 }
-
+.icon-cog:before {
+    content: "\e994";
+}
+.icon-cancel-circle:before {
+    content: "\ea0d";
+}

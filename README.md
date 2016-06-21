@@ -1,6 +1,6 @@
 **[IN DEVELOPMENT...]**
 
-![preview](https://github.com/kooparse/getsub-desktop/blob/master/assets/images/preview.png?raw=true)
+![preview](https://github.com/kooparse/getsub-desktop/blob/master/statics/preview.png?raw=true)
 
 <br><br>
 
@@ -13,43 +13,50 @@ Getsub is an app which enables you to download your movie or TV show subtitle wi
 
 ## Current languages
 
- - Afrikaans
- - Indonesian
- - Afrikaans
- - Catalan
- - Danish
- - German
- - English
- - Spanish
- - Greek
- - French
- - Italian
- - Hungarian
- - Dutch
- - Norwegian
- - Polish
- - Portuguese
- - Finnish
- - Swedish
- - Turkish
- - Icelandic
- - Czech
- - Russian
- - Thai
- - Hebrew
- - Arabic
- - Chinese
- - Japanese
- - Korean
+- Afrikaans
+- Indonesian
+- Afrikaans
+- Catalan
+- Danish
+- German
+- English
+- Spanish
+- Greek
+- French
+- Italian
+- Hungarian
+- Dutch
+- Norwegian
+- Polish
+- Portuguese
+- Finnish
+- Swedish
+- Turkish
+- Icelandic
+- Czech
+- Russian
+- Thai
+- Hebrew
+- Arabic
+- Chinese
+- Japanese
+- Korean
 
 
- ## Install && Running
+ ## Install
 ### Unix and OS/X
 - Fork or download this repository.
 - `cd` to the project's location
 - run `npm install`
+
+## Running in development
 - run `npm start`
-- run `npm run build-dev`
+- run `npm run electron-dev`
+
+## Running in production
+- run `npm run build`
+- run `npm run electron-prod`
+
 
 
 ## Contact

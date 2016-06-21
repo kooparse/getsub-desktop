@@ -1,8 +1,8 @@
-var webpack = require('webpack')
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+import webpack from 'webpack'
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import config from './webpack.base.config'
 
-var config = require('./webpack.base.config')
 
 config.watch = false
 config.cache = true
@@ -10,22 +10,23 @@ config.devtool = '#inline-source-map'
 config.target = 'electron-renderer'
 
 config.entry = [
+  ...config.entry,
   'webpack-dev-server/client?http://localhost:3000',
   'webpack/hot/only-dev-server',
-].concat(config.entry)
+]
 
 config.output = {
-  publicPath: '/',
+  publicPath: 'http://localhost:8080/',
   filename: 'bundle.js',
 }
 
-config.module.loaders = [{
-  test: /\.jsx?$/,
-  exclude: /node_modules/,
-  loader: 'react-hot',
-}].concat(config.module.loaders)
+config.module.loaders = [
+  {test: /\.jsx?$/, exclude: /node_modules/, loader: 'react-hot'},
+  ...config.module.loaders
+]
 
 config.plugins = [
+  ...config.plugins,
   new BrowserSyncPlugin({
     host: 'localhost',
     port: 8080,
@@ -36,16 +37,13 @@ config.plugins = [
     notify: false,
   }),
   new webpack.HotModuleReplacementPlugin(),
-]
-.concat(config.plugins)
-.concat([
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.NoErrorsPlugin(),
   new HtmlWebpackPlugin({
     template: 'renderer/index.html',
     inject: false
   })
-])
+]
 
 config.devServer = {
   hot: true,
@@ -54,4 +52,4 @@ config.devServer = {
   port: 3000,
 }
 
-module.exports = config
+export default config

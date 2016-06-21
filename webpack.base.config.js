@@ -1,9 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
-var cssnext = require('cssnext-loader')
+import path from 'path'
+import webpack from 'webpack'
+import cssnext from 'cssnext-loader'
 
-module.exports = {
 
+export default {
   entry: [
     'babel-polyfill',
     path.join(__dirname, 'renderer'),
@@ -30,9 +30,19 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(ttf|eot|svg|woff)(.*)$/,
+        loader: 'file'
+      },
+      {
+        test: /\.global\.css$/,
+        loaders: ['style?sourceMap', 'css?cssnext']
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
         exclude: /node_modules/,
-        loaders: ['style?sourceMap', 'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!cssnext']
+        loaders: [
+          'style?sourceMap',
+          'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!cssnext']
       },
     ],
   },
@@ -52,6 +62,5 @@ module.exports = {
       ReactDOM: 'react-dom',
       CSSModules: 'react-css-modules'
     }),
-  ],
-
+  ]
 }

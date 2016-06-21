@@ -1,9 +1,6 @@
-import {createStore, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
-import reducers from 'reducers'
+import productionStore from './store.prod'
+import developmentStore from './store.dev'
 
-const logger = createLogger()
-const store = createStore(reducers, applyMiddleware(thunk, logger))
-
-export default store
+export default process.env.NODE_ENV === 'production'
+  ? productionStore
+  : developmentStore

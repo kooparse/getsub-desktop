@@ -1,0 +1,14 @@
+/* IMPORTS && GLOBAL CSS */
+
+@import "~normalize.css";
+@import "../__assets__/fonts/icomoon/style.css";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.app {
+  overflow: hidden;
+}

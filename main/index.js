@@ -1,8 +1,11 @@
-const electron = require('electron')
-const path = require('path')
-const {app, ipcMain, BrowserWindow} = electron
+import {app, ipcMain, BrowserWindow} from 'electron'
+import path from 'path'
 let win
 
+
+const appPath = process.env.NODE_ENV === 'production'
+  ? `${__dirname}/index.html`
+  : `${path.resolve(__dirname, '..')}/renderer/index.html`
 
 app.on('ready', () => {
   win = new BrowserWindow({
@@ -13,10 +16,9 @@ app.on('ready', () => {
     fullscreenable: false,
     title: 'Getsub'
   })
-  win.loadURL(`file://${path.resolve(__dirname, '..')}/renderer/index.html`)
-  win.on('closed', () => {
-   win = null
-  })
+
+  win.loadURL(`file://${appPath}`)
+  win.on('closed', () => win = null)
 })
 
 
