@@ -2,7 +2,6 @@ import path from 'path'
 import webpack from 'webpack'
 import cssnext from 'cssnext-loader'
 
-
 export default {
   entry: [
     'babel-polyfill',

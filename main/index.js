@@ -3,7 +3,6 @@ import * as menu from './menu'
 import * as windows from './windows'
 import * as listeners from './listeners'
 
-
 app.on('ready', () => {
   windows.init()
 

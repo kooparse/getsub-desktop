@@ -1,4 +1,3 @@
-
 /**
  * Global App Object
  * Supported languages are stored here

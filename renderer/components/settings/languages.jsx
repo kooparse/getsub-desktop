@@ -32,7 +32,6 @@ export default class Languages extends React.Component {
 
 }
 
-
 Languages.PropTypes = {
   selectLanguage: React.PropTypes.func.isRequired,
   lang: React.PropTypes.string.isRequired

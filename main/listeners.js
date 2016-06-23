@@ -1,7 +1,6 @@
 import {ipcMain} from 'electron'
 import {mainWindow} from './windows'
 
-
 export const init = () => {
   ipcMain.on('downloadFile', (event, url, savingPath) => {
     mainWindow.webContents.downloadURL(url)

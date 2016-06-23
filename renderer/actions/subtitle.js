@@ -2,7 +2,6 @@ import * as ipc from 'utils/downloader'
 import {asyncRequest, asyncSuccess, asyncFailure} from 'utils/async'
 import * as getsub from 'utils/getsub/'
 
-
 const SEARCH_SUBTITLES = 'SEARCH_SUBTITLES'
 const DOWNLOAD_SUBTITLE = 'DOWNLOAD_SUBTITLE'
 
@@ -28,8 +27,7 @@ const searchSubtitles = (files) => {
           originName: subtitle.originName
         }))
       }
-    }
-    catch (err) {
+    } catch (err) {
       dispatch(asyncFailure(SEARCH_SUBTITLES, err))
     }
   }
@@ -45,8 +43,7 @@ const downloadSubtitle = (subtitle) => {
 
       await ipc.downloadSubtitle(subtitle, savingPath)
       dispatch(asyncSuccess(DOWNLOAD_SUBTITLE, {id}))
-    }
-    catch (err) {
+    } catch (err) {
       dispatch(asyncFailure(DOWNLOAD_SUBTITLE, err))
     }
   }

@@ -1,6 +1,5 @@
 import style from './style.css'
 
-
 @CSSModules(style)
 export default class Loader extends React.Component {
 
@@ -10,7 +9,6 @@ export default class Loader extends React.Component {
   }
 
 }
-
 
 Loader.PropTypes = {
   isSearching: React.PropTypes.bool.isRequired

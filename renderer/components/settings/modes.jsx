@@ -4,7 +4,7 @@ import style from './style.css'
 export default class Modes extends React.Component {
 
   change = (event) =>
-    this.props.selectMode(event.target.value == 'true' ? true : false)
+    this.props.selectMode(JSON.parse(event.target.value))
 
   render () {
     return (
@@ -26,7 +26,6 @@ export default class Modes extends React.Component {
   }
 
 }
-
 
 Modes.PropTypes = {
   selectMode: React.PropTypes.func.isRequired,

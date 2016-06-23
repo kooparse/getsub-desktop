@@ -2,7 +2,6 @@ const TOGGLE_PANEL = 'TOGGLE_PANEL'
 const SELECT_LANGUAGE = 'SELECT_LANGUAGE'
 const SELECT_MODE = 'SELECT_MODE'
 
-
 const togglePanel = () => {
   return {type: TOGGLE_PANEL}
 }
@@ -20,7 +19,6 @@ const selectMode = (auto) => {
     auto
   }
 }
-
 
 export {
   TOGGLE_PANEL,

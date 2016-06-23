@@ -1,7 +1,6 @@
 import {ipcRenderer} from 'electron'
 import path from 'path'
 
-
 /**
  * Download subtitle method
  *
@@ -10,7 +9,7 @@ import path from 'path'
  */
 export const downloadSubtitle = async (subtitle, savingPath) => {
   return await new Promise((resolve, reject) => {
-    savingPath =  _normalize(subtitle.subtitleName, savingPath)
+    savingPath = _normalize(subtitle.subtitleName, savingPath)
     ipcRenderer.send('downloadFile', subtitle.downloadLink, savingPath)
     ipcRenderer.on('done', (event, state) => {
       if (state === 'completed') resolve('Download successfully')
@@ -18,7 +17,6 @@ export const downloadSubtitle = async (subtitle, savingPath) => {
     })
   })
 }
-
 
 /**
  * Path normalizer for Windows and macOS

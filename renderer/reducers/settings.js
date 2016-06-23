@@ -1,13 +1,6 @@
 import {flow} from 'utils/async'
-import {
-  TOGGLE_PANEL,
-  SELECT_LANGUAGE,
-  SELECT_MODE
-} from 'actions/settings'
-import {
-  SEARCH_SUBTITLES
-} from 'actions/subtitle'
-
+import {TOGGLE_PANEL, SELECT_LANGUAGE, SELECT_MODE} from 'actions/settings'
+import {SEARCH_SUBTITLES} from 'actions/subtitle'
 
 const defaultState = {
   lang: 'eng',
@@ -15,7 +8,6 @@ const defaultState = {
   path: null,
   isPanelOpen: false
 }
-
 
 export default function (state = defaultState, action) {
   switch (action.type) {

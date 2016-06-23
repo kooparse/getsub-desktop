@@ -1,7 +1,6 @@
 import path from 'path'
 import {app, BrowserWindow} from 'electron'
 
-
 const appPath = process.env.NODE_ENV === 'production'
   ? `${__dirname}/index.html`
   : `${path.resolve(__dirname, '..')}/renderer/index.html`
@@ -16,6 +15,6 @@ export const init = () => {
     fullscreenable: false,
     title: 'Getsub'
   })
-  mainWindow.loadURL(`file://${appPath}`)
   mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.loadURL(`file://${appPath}`)
 }

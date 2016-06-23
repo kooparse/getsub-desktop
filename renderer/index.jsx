@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import routes from 'routes'
 import store from 'store'
 
-
 window.GETSUB = global
 
 ReactDOM.render(

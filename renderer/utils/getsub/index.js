@@ -1,7 +1,6 @@
 /* API(s) */
 import opensubtitle from './opensubtitle'
 
-
 /**
  * Getsub Search API
  *

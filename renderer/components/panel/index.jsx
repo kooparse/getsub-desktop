@@ -1,7 +1,6 @@
 import style from './style.css'
 import Loader from 'components/loader'
 
-
 @CSSModules(style)
 export default class Panel extends React.Component {
 
@@ -45,7 +44,6 @@ export default class Panel extends React.Component {
   }
 
 }
-
 
 Panel.propTypes = {
   downloadSubtitle: React.PropTypes.func.isRequired,

@@ -2,7 +2,6 @@ import OS from 'opensubtitles'
 import uuid from 'node-uuid'
 const os = new OS()
 
-
 /**
  * Init function
  *
@@ -18,10 +17,10 @@ export default async (file, lang) => {
 
   let subtitles = (await searchSubtitles(token, query))
     .filter((subtitle) => {
-      return subtitle.SubDownloadLink
-        && subtitle.IDSubtitleFile
-        && subtitle.SubFileName
-        && subtitle.MovieReleaseName
+      return subtitle.SubDownloadLink &&
+        subtitle.IDSubtitleFile &&
+        subtitle.SubFileName &&
+        subtitle.MovieReleaseName
     })
     .map((subtitle) => {
       /* we want to remove .zip ext to directly download .srt */
@@ -40,7 +39,6 @@ export default async (file, lang) => {
   return subtitles
 }
 
-
 /**
  * Bind opensubtitles computeHash method
  *
@@ -56,7 +54,6 @@ const computeHash = async (path) => {
   })
 }
 
-
 /**
  * Bind opensubtitles checkMovieHash method
  *
@@ -64,14 +61,13 @@ const computeHash = async (path) => {
  * @return {Array} Array of object with file infos
  */
 const checkMovieHash = async (sizes) => {
-  return await new Promise ((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     os.checkMovieHash(sizes, (err, res) => {
       if (err) reject(err)
       else resolve(res.data)
     })
   })
 }
-
 
 /**
  * Bind opensubtitles login method
@@ -87,7 +83,6 @@ const login = async () => {
     }, null, null, null, 'OSTestUserAgent')
   })
 }
-
 
 /**
  * Bind opensubtitles search for subtitles method

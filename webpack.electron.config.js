@@ -4,7 +4,6 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import config from './webpack.base.config'
 
-
 config.target = 'electron-main'
 
 config.node = {

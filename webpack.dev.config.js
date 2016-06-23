@@ -3,7 +3,6 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import config from './webpack.base.config'
 
-
 config.watch = false
 config.cache = true
 config.devtool = '#inline-source-map'

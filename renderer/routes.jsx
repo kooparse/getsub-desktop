@@ -4,7 +4,6 @@ import Base from 'containers'
 import Home from 'containers/home'
 import Settings from 'containers/settings'
 
-
 /**
  * It isn't the best way to do this kind of stuff...
  * But I just need to change the route for now.

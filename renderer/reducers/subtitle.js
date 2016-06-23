@@ -1,9 +1,5 @@
 import {flow} from 'utils/async'
-import {
-  SEARCH_SUBTITLES,
-  DOWNLOAD_SUBTITLE
-} from 'actions/subtitle'
-
+import {SEARCH_SUBTITLES, DOWNLOAD_SUBTITLE} from 'actions/subtitle'
 
 const defaultState = {
   list: [],
@@ -11,7 +7,6 @@ const defaultState = {
   isSearching: false,
   isDownloading: false
 }
-
 
 export default function (state = defaultState, action) {
   switch (action.type) {

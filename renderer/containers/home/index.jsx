@@ -7,7 +7,6 @@ import * as panelActionCreators from 'actions/settings'
 import DraggingZone from 'components/dragging-zone'
 import Panel from 'components/panel'
 
-
 @connect((state) => ({
   subtitles: state.subtitle,
   isPanelOpen: state.settings.isPanelOpen,

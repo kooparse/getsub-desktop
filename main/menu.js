@@ -1,7 +1,6 @@
 import {app, Menu} from 'electron'
 import {mainWindow} from './windows'
 
-
 const getTemplate = () => {
   let template = []
 
@@ -34,13 +33,12 @@ const getTemplate = () => {
           label: 'Close',
           click: () => app.quit()
         }
-    ]
+      ]
     }]
   }
 
   return template
 }
-
 
 export const init = () => {
   let menu = Menu.buildFromTemplate(getTemplate())

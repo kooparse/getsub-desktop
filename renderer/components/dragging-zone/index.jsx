@@ -3,7 +3,6 @@ import {hashHistory} from 'react-router'
 import Dropzone from 'react-dropzone'
 import Toggle from 'components/toggle'
 
-
 @CSSModules(style)
 export default class DraggingZone extends React.Component {
 
@@ -65,7 +64,6 @@ export default class DraggingZone extends React.Component {
   }
 
 }
-
 
 DraggingZone.propTypes = {
   searchSubtitles: React.PropTypes.func.isRequired,

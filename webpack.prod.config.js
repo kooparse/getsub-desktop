@@ -4,13 +4,12 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import config from './webpack.base.config'
 
-
 config.target = 'electron-renderer'
 
 config.output = {
   path: path.join(__dirname, 'dist'),
   filename: 'bundle.js',
-};
+}
 
 config.plugins = [
   ...config.plugins,

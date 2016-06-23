@@ -4,14 +4,12 @@
  * The Flow method will be call from reducers
  */
 
-
 /**
  * Constants describing async flow
  */
 const REQUEST = 'REQUEST'
 const SUCCESS = 'SUCCESS'
 const FAILURE = 'FAILURE'
-
 
 /**
  * TODO: explaning...
@@ -33,7 +31,6 @@ export function flow (action, type) {
       return type
   }
 }
-
 
 export function asyncRequest (action) {
   return {type: flow(action, REQUEST)}
