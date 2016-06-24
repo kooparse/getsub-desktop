@@ -15,7 +15,8 @@ export default class Languages extends React.Component {
             About:
           </label>
           <p styleName="description">
-            [TODO...]
+            If any questions: <strong>getsub@kooparse.com</strong><br/>
+            Copyright © 2016 Alexandre Chêne (MIT)
           </p>
         </div>
       </section>
