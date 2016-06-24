@@ -26,6 +26,5 @@ export const downloadSubtitle = async (subtitle, savingPath) => {
  * @return {String} Normalized path
  */
 const _normalize = (subtitleName, savingPath) => {
-  // TODO: verify on all platforms...
-  return `${path.dirname(savingPath)}/${subtitleName}`
+  return path.normalize(`${path.dirname(savingPath)}/${subtitleName}`)
 }
