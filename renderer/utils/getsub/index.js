@@ -10,6 +10,7 @@ import opensubtitle from './opensubtitle'
  * @return {Object} Resulted search object (with subtitles list and origin names)
  */
 export const search = async (file, lang) => {
+  const originName = file.name
   let subtitles = await opensubtitle(file, lang)
 
   /**
@@ -27,12 +28,12 @@ export const search = async (file, lang) => {
     threshold: 0.6,
     location: 0,
     distance: 100,
-    maxPatternLength: file.name.length + 8,
+    maxPatternLength: originName.length + 8,
     keys: ['fileName']
   })
 
   return {
-    subtitles: fuse.search(file.name),
+    subtitles: fuse.search(originName),
     filePath: file.path,
     originName: file.name,
     originLang: lang
