@@ -1,9 +1,9 @@
 import path from 'path'
 import {app, BrowserWindow} from 'electron'
 
-const appPath = process.env.NODE_ENV === 'production'
-  ? `${__dirname}/index.html`
-  : `${path.resolve(__dirname, '..')}/renderer/index.html`
+const appPath = process.env.NODE_ENV === 'development'
+  ? `${path.resolve(__dirname, '..')}/renderer/index.html`
+  : `${__dirname}/index.html`
 
 export let mainWindow
 export const init = () => {

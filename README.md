@@ -57,6 +57,9 @@ Getsub is an app which enables you to download your movie or TV show subtitle wi
 - run `npm run build`
 - run `npm run electron-prod`
 
+## Packaging on all platforms
+- run `npm run package`
+- `cd` to dist/release
 
 
 ## Contact

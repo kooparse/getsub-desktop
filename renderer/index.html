@@ -12,9 +12,9 @@
     <script>
       (function () {
         const script = document.createElement('script')
-        script.src = process.env.NODE_ENV === 'production'
-        ? './bundle.js'
-        : 'http://localhost:8080/bundle.js'
+        script.src = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8080/bundle.js'
+        : './bundle.js'
         document.write(script.outerHTML)
       })()
     </script>
