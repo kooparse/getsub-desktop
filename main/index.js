@@ -1,3 +1,4 @@
+import os from 'os'
 import {app, ipcMain} from 'electron'
 import * as menu from './menu'
 import * as windows from './windows'
@@ -12,6 +13,7 @@ app.on('ready', () => {
     mainWindow.focus()
   })
 
-  menu.init()
+  /* Only on macOS for now... */
+  if (os.platform() === 'darwin') menu.init()
   listeners.init()
 })

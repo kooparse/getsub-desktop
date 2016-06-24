@@ -4,7 +4,7 @@ export default class Base extends React.Component {
 
   render () {
     return (
-      <div styleName="app">
+      <div className="app">
         {this.props.children}
       </div>
     )
