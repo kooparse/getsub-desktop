@@ -7,7 +7,7 @@ import pkg from './package.json'
 const options = {
   dir: './',
   name: 'Getsub',
-  arch: 'all',
+  arch: 'x64',
   platform: 'all',
   asar: false,
   prune: true,
