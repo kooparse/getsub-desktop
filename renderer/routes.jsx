@@ -6,7 +6,7 @@ import Settings from 'containers/settings'
 
 /**
  * It isn't the best way to do this kind of stuff...
- * But I just need to change the route for now.
+ * But I only need to change one route for now.
  */
 ipcRenderer.on('settings', () => hashHistory.push('/settings'))
 
