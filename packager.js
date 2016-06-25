@@ -4,14 +4,13 @@ import {exec} from 'child_process'
 import del from 'del'
 import pkg from './package.json'
 
+const platforms = ['darwin', 'linux', 'win32']
 const options = {
   dir: './',
   name: 'Getsub',
   arch: 'x64',
-  platform: 'all',
   asar: false,
   prune: true,
-  out: 'dist/release',
   ignore: [
     '^/test($|/)',
     '^/tools($|/)',
@@ -31,9 +30,11 @@ const init = async () => {
   await buildAll()
 
   console.log('Packaging...')
-  await doPackage()
+  for (let platform of platforms) {
+    await pack(platform)
+  }
 
-  console.log('DONE!')
+  console.log('Finished!')
 }
 
 const buildAll = async () => {
@@ -45,9 +46,13 @@ const buildAll = async () => {
   })
 }
 
-const doPackage = async () => {
+const pack = async (platform) => {
   return await new Promise((resolve, reject) => {
-    packager(options, (err) => {
+    packager({
+      ...options,
+      platform,
+      out: `dist/release/${platform}`
+    }, (err) => {
       if (err) reject(err)
       else resolve()
     })
