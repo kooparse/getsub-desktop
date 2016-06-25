@@ -1,5 +1,4 @@
 import 'babel-polyfill'
-import path from 'path'
 import packager from 'electron-packager'
 import appdmg from 'appdmg'
 import {exec} from 'child_process'
@@ -26,7 +25,7 @@ const options = {
 
 const init = async () => {
   console.log('Deleting folders...')
-  await del('dist')
+  await del(['dist', 'release'])
 
   console.log('Building main and renderer files...')
   await buildAll()
@@ -53,7 +52,7 @@ const pack = async (platform) => {
     packager({
       ...options,
       platform,
-      out: `dist/release/${platform}`
+      out: `release/${platform}`
     }, (err, buildPath) => {
       if (err) {
         reject(err)
@@ -72,7 +71,7 @@ const pack = async (platform) => {
 
 const createDmg = (buildPath, cb) => {
   const dmgOpt = {
-    target: 'dist/release/darwin/getsub.dmg',
+    target: 'release/darwin/getsub.dmg',
     basepath: buildPath[0],
     specification: {
       title: 'Getsub',
