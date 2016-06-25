@@ -1,5 +1,7 @@
 import 'babel-polyfill'
+import path from 'path'
 import packager from 'electron-packager'
+import appdmg from 'appdmg'
 import {exec} from 'child_process'
 import del from 'del'
 import pkg from './package.json'
@@ -7,7 +9,7 @@ import pkg from './package.json'
 const platforms = ['darwin', 'linux', 'win32']
 const options = {
   dir: './',
-  name: 'Getsub',
+  name: 'getsub',
   arch: 'x64',
   asar: false,
   prune: true,
@@ -52,12 +54,37 @@ const pack = async (platform) => {
       ...options,
       platform,
       out: `dist/release/${platform}`
-    }, (err) => {
-      if (err) reject(err)
-      else resolve()
+    }, (err, buildPath) => {
+      if (err) {
+        reject(err)
+      } else if (platform === 'darwin') {
+        createDmg(buildPath, (err) => {
+          if (err) reject(err)
+          else resolve()
+        })
+      } else {
+        resolve()
+      }
     })
 
   })
+}
+
+const createDmg = (buildPath, cb) => {
+  const dmgOpt = {
+    target: 'dist/release/darwin/getsub.dmg',
+    basepath: buildPath[0],
+    specification: {
+      title: 'Getsub',
+      contents: [
+        {x: 122, y: 240, type: 'file', path: 'getsub.app'},
+        {x: 380, y: 240, type: 'link', path: '/Applications'},
+      ]
+    }
+  }
+  const dmg = appdmg(dmgOpt)
+  dmg.once('error', (err) => cb(err))
+  dmg.once('finish', () => cb(null))
 }
 
 init()
