@@ -13,11 +13,10 @@ const options = {
   asar: false,
   prune: true,
   ignore: [
-    '^/test($|/)',
-    '^/tools($|/)',
     '^/release($|/)',
     '^/main($|/)',
     '^/renderer($|/)',
+    '^/statics($|/)',
     '^/webpack(.*)',
     ...Object.keys(pkg.devDependencies).map(name => `/node_modules/${name}($|/)`)
   ]
