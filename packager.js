@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import packager from 'electron-packager'
+import {createWindowsInstaller} from 'electron-winstaller'
 import appdmg from 'appdmg'
 import {exec} from 'child_process'
 import del from 'del'
@@ -60,6 +61,11 @@ const pack = async (platform) => {
           if (err) reject(err)
           else resolve()
         })
+      } else if (platform === 'win32') {
+        createInstaller(buildPath, (err) => {
+          if (err) reject(err)
+          else resolve()
+        })
       } else {
         resolve()
       }
@@ -83,6 +89,19 @@ const createDmg = (buildPath, cb) => {
   const dmg = appdmg(dmgOpt)
   dmg.once('error', (err) => cb(err))
   dmg.once('finish', () => cb(null))
+}
+
+const createInstaller = (buildPath, cb) => {
+  createWindowsInstaller({
+    appDirectory: buildPath[0],
+    outputDirectory: 'release/win32',
+    authors: 'Alexandre',
+    title: 'Getsub',
+    setupExe: 'setup-getsub',
+    exe: 'getsub.exe'
+  })
+  .then(cb)
+  .catch(cb)
 }
 
 init()

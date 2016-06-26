@@ -61,6 +61,11 @@ Getsub is an app which enables you to download your movie or TV show subtitle wi
 - run `npm run package`
 - `cd` to dist/release
 
+## Windows installer notes
+For non-windows platforms, `wine` and `mono` need to be installed first.
+On macOS, first install [XQuartz](https://www.xquartz.org/), then:
+- run 'brew install wine'
+- run 'brew install mono'
 
 ## Contact
 Alexandre Chêne: kooparse@protonmail.com
