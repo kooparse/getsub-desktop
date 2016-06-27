@@ -1,15 +1,38 @@
-**[IN DEVELOPMENT...]**
+# Getsub Desktop
+**A better, faster, stronger way to find your subtitles.**
 
 ![preview](https://github.com/kooparse/getsub-desktop/blob/master/statics/preview.png?raw=true)
 
 <br><br>
 
-# Getsub Desktop
-**A better, faster, stronger way to find your subtitles.**
-
-<br>
 ## What is Getsub?
 Getsub is an app which enables you to download your movie or TV show subtitle with only a **drag & drop**, awesome eh?!
+
+
+## Install
+### Unix and OS/X
+- Fork or download this repository.
+- `cd` to the project's location
+- run `npm install`
+
+## Running in development
+- run `npm start`
+- run `npm run electron-dev`
+
+## Running in production
+- run `npm run build`
+- run `npm run electron-prod`
+
+## Packaging on all platforms
+- run `npm run package`
+- `cd` to dist/release
+
+## Windows installer notes
+For non-windows platforms, `wine` and `mono` need to be installed first.
+On macOS, first install [XQuartz](https://www.xquartz.org/), then:
+- run `brew install wine`
+- run `brew install mono`
+
 
 ## Current languages
 
@@ -41,31 +64,6 @@ Getsub is an app which enables you to download your movie or TV show subtitle wi
 - Chinese
 - Japanese
 - Korean
-
-
- ## Install
-### Unix and OS/X
-- Fork or download this repository.
-- `cd` to the project's location
-- run `npm install`
-
-## Running in development
-- run `npm start`
-- run `npm run electron-dev`
-
-## Running in production
-- run `npm run build`
-- run `npm run electron-prod`
-
-## Packaging on all platforms
-- run `npm run package`
-- `cd` to dist/release
-
-## Windows installer notes
-For non-windows platforms, `wine` and `mono` need to be installed first.
-On macOS, first install [XQuartz](https://www.xquartz.org/), then:
-- run 'brew install wine'
-- run 'brew install mono'
 
 ## Contact
 Alexandre Chêne: kooparse@protonmail.com
