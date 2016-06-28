@@ -97,7 +97,7 @@ const createInstaller = (buildPath, cb) => {
     outputDirectory: 'release/win32',
     authors: 'Alexandre',
     title: 'Getsub',
-    setupExe: 'setup-getsub',
+    setupExe: 'setup-getsub.exe',
     exe: 'getsub.exe'
   })
   .then(cb)
