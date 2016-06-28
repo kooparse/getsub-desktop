@@ -68,7 +68,5 @@ export default class DraggingZone extends React.Component {
 DraggingZone.propTypes = {
   searchSubtitles: React.PropTypes.func.isRequired,
   togglePanel: React.PropTypes.func.isRequired,
-  isSearching: React.PropTypes.bool.isRequired,
-  isDownloading: React.PropTypes.bool.isRequired,
   lang: React.PropTypes.string.isRequired
 }

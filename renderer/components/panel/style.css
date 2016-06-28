@@ -28,8 +28,9 @@
 }
 
 .item {
+  position: relative;
   color: #fff;
-  background-color: #304650;
+  background-color: rgb(48, 70, 80);
   font-size: 16px;
   line-height: 1.2;
   margin: 6.5px 10px;
@@ -42,11 +43,46 @@
   transition: background-color .2s;
 }
 
+.title {
+  position: relative;
+  z-index: 2;
+}
+
 .downloaded {
   composes: item;
-  background-color: #1DB954;
+  background-color: rgba(48, 70, 80, .8);
+}
+
+.downloading {
+  composes: item;
 }
 
 .item:not(.downloaded):hover { background-color: #283940; }
 .downloaded:hover { opacity: .9 }
 .item:first-child { margin-top: 0; }
+
+@keyframes loader {
+  0% { width: 0px; }
+  50% { width: 100% }
+  100% { width: 0px; }
+}
+
+.loader {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(40, 57, 64, .5);
+  transition: background-color .3s;
+  animation: loader 1s ease-in-out infinite;
+}
+
+.downloading:hover .loader {
+  background-color: rgb(35, 48, 53);
+}
+
+.loader-hidden {
+  display: none;
+}

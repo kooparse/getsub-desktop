@@ -28,14 +28,12 @@ export default class Home extends React.Component {
           isOpen={this.props.isPanelOpen}
           togglePanel={panelActions.togglePanel}
           isSearching={this.props.subtitles.isSearching}
-          isDownloading={this.props.subtitles.isDownloading}
           lang={this.props.lang}/>
         <Panel
           isOpen={this.props.isPanelOpen}
           list={this.props.subtitles.list}
           cursor={this.props.subtitles.cursor}
           isSearching={this.props.subtitles.isSearching}
-          isDownloading={this.props.subtitles.isDownloading}
           downloadSubtitle={subtitleActions.downloadSubtitle}/>
       </div>
     )

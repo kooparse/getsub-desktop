@@ -6,11 +6,13 @@ export default class Panel extends React.Component {
 
   download = (subtitle, item, event) => {
     event.stopPropagation()
-    this.props.downloadSubtitle({
-      ...subtitle,
-      filePath: item.filePath,
-      originName: item.originName
-    })
+    if (!subtitle.downloaded) {
+      this.props.downloadSubtitle({
+        ...subtitle,
+        filePath: item.filePath,
+        originName: item.originName
+      })
+    }
   }
 
   render () {
@@ -24,12 +26,25 @@ export default class Panel extends React.Component {
                 <div key={listIndex} styleName="block">
                   {
                     item.subtitles.map((subtitle, itemIndex) => {
+                      let loaderClass = subtitle.isDownloading
+                        ? 'loader'
+                        : 'loader-hidden'
+
+                      let itemClass = subtitle.downloaded
+                        ? 'downloaded'
+                        : 'item'
+
+                      itemClass = subtitle.isDownloading
+                        ? 'downloading'
+                        : itemClass
+
                       return (
                         <div
-                          styleName={subtitle.downloaded ? 'downloaded' : 'item'}
+                          styleName={itemClass}
                           onClick={this.download.bind(this, subtitle, item)}
                           key={itemIndex}>
-                          {subtitle.fileName}
+                          <div styleName="title">{subtitle.fileName}</div>
+                          <div styleName={loaderClass}/>
                         </div>
                       )
                     })
@@ -50,6 +65,5 @@ Panel.propTypes = {
   cursor: React.PropTypes.object.isRequired,
   isOpen: React.PropTypes.bool.isRequired,
   isSearching: React.PropTypes.bool.isRequired,
-  isDownloading: React.PropTypes.bool.isRequired,
   list: React.PropTypes.array.isRequired
 }

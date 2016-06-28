@@ -32,14 +32,14 @@ export function flow (action, type) {
   }
 }
 
-export function asyncRequest (action) {
-  return {type: flow(action, REQUEST)}
+export function asyncRequest (action, {...params}) {
+  return {type: flow(action, REQUEST), params}
 }
 
-export function asyncSuccess (action, result) {
+export function asyncSuccess (action, {...result}) {
   return {type: flow(action, SUCCESS), result}
 }
 
-export function asyncFailure (action, error) {
+export function asyncFailure (action, {...error}) {
   return {type: flow(action, FAILURE), error}
 }

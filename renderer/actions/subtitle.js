@@ -36,15 +36,15 @@ const searchSubtitles = (files) => {
 const downloadSubtitle = (subtitle) => {
   return async function (dispatch, getState) {
     try {
-      dispatch(asyncRequest(DOWNLOAD_SUBTITLE))
-
       const {id, downloadLink} = subtitle
       const savingPath = getState().settings.path || subtitle.filePath
+
+      dispatch(asyncRequest(DOWNLOAD_SUBTITLE, {id}))
 
       await ipc.downloadSubtitle(subtitle, savingPath)
       dispatch(asyncSuccess(DOWNLOAD_SUBTITLE, {id}))
     } catch (err) {
-      dispatch(asyncFailure(DOWNLOAD_SUBTITLE, err))
+      dispatch(asyncFailure(DOWNLOAD_SUBTITLE, {id}))
     }
   }
 }

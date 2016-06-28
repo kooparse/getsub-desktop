@@ -4,26 +4,41 @@ import {SEARCH_SUBTITLES, DOWNLOAD_SUBTITLE} from 'actions/subtitle'
 const defaultState = {
   list: [],
   cursor: {},
-  isSearching: false,
-  isDownloading: false
+  isSearching: false
+}
+
+const mutateList = (list, id, changes) => {
+  return list.map((arr) => {
+    const subtitles = arr.subtitles.map((subtitle) => {
+      return subtitle.id === id ? {...subtitle, ...changes} : subtitle
+    })
+    return {...arr, subtitles}
+  })
 }
 
 export default function (state = defaultState, action) {
+
+  var list
+
   switch (action.type) {
     case flow(SEARCH_SUBTITLES, 'REQUEST'):
       return {...state, isSearching: true}
 
+    case flow(DOWNLOAD_SUBTITLE, 'REQUEST'):
+      list = mutateList(state.list, action.params.id, {isDownloading: true})
+      return {...state, list}
+
     case flow(SEARCH_SUBTITLES, 'FAILURE'):
       return {...state, isSearching: false}
 
+    case flow(DOWNLOAD_SUBTITLE, 'FAILURE'):
+      list = mutateList(state.list, action.result.id, {isDownloading: false})
+      return {...state, list}
+
     case flow(DOWNLOAD_SUBTITLE, 'SUCCESS'):
-      const list = state.list.map((arr) => {
-        const subtitles = arr.subtitles.map((subtitle) => {
-          return subtitle.id === action.result.id
-            ? {...subtitle, downloaded: true}
-            : subtitle
-        })
-        return {...arr, subtitles}
+      list = mutateList(state.list, action.result.id, {
+        downloaded: true,
+        isDownloading: false
       })
       return {...state, list}
 

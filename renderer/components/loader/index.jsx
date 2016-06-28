@@ -4,7 +4,7 @@ import style from './style.css'
 export default class Loader extends React.Component {
 
   render () {
-    let loaderClass = this.props.isSearching ? 'loader' : 'loader-hidden'
+    const loaderClass = this.props.isSearching ? 'loader' : 'loader-hidden'
     return (<div id="loader" styleName={loaderClass}></div>)
   }
 
