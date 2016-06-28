@@ -13,6 +13,8 @@ app.on('ready', () => {
     mainWindow.focus()
   })
 
+  if (process.env.NODE_ENV === 'development') mainWindow.openDevTools()
+
   /* Only on macOS for now... */
   if (os.platform() === 'darwin') menu.init()
   listeners.init()

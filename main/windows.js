@@ -15,6 +15,8 @@ export const init = () => {
     fullscreenable: false,
     title: 'Getsub'
   })
-  mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.on('close', () => mainWindow.webContents.send('setInitialState'))
+  /* Timeout to be sure the current state is stored */
+  mainWindow.on('closed', () => setTimeout(() => mainWindow = null, 150))
   mainWindow.loadURL(`file://${appPath}`)
 }
