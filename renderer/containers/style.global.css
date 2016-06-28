@@ -14,6 +14,8 @@ body {
   user-select: none;
 }
 
+p, span { cursor: default }
+
 .app {
   overflow: hidden;
   animation: starter-fade .3s 1 ease;
