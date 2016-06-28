@@ -19,3 +19,5 @@ app.on('ready', () => {
   if (os.platform() === 'darwin') menu.init()
   listeners.init()
 })
+
+app.on('window-all-closed', () => app.quit())
