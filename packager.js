@@ -13,6 +13,7 @@ const options = {
   arch: 'x64',
   asar: false,
   prune: true,
+  icon: './statics/icon',
   ignore: [
     '^/release($|/)',
     '^/main($|/)',
