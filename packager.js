@@ -84,6 +84,10 @@ const createDmg = (buildPath, cb) => {
       contents: [
         {x: 122, y: 240, type: 'file', path: 'getsub.app'},
         {x: 380, y: 240, type: 'link', path: '/Applications'},
+        {x: 50, y: 500, type: 'position', path: '.background'},
+        {x: 100, y: 500, type: 'position', path: '.DS_Store'},
+        {x: 150, y: 500, type: 'position', path: '.Trashes'},
+        {x: 200, y: 500, type: 'position', path: '.VolumeIcon.icns'}
       ]
     }
   }
