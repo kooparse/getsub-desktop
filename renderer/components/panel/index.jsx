@@ -45,6 +45,7 @@ export default class Panel extends React.Component {
                           key={itemIndex}>
                           <div styleName="title">{subtitle.fileName}</div>
                           <div styleName={loaderClass}/>
+                          <i className="icon-check-alt" styleName="checkmark"/>
                         </div>
                       )
                     })
