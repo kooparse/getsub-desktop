@@ -6,14 +6,18 @@ import {exec} from 'child_process'
 import del from 'del'
 import pkg from './package.json'
 
-const platforms = ['darwin', 'linux', 'win32']
+const platforms = ['darwin', 'win32']
 const options = {
   dir: './',
   name: 'getsub',
-  arch: 'x64',
   asar: false,
   prune: true,
   icon: './statics/icon',
+  'version-string': {
+    OriginalFilename: 'getsub.exe',
+    FileDescription: 'A better way to find your subtitles!',
+    ProductName: 'Getsub'
+  },
   ignore: [
     '^/release($|/)',
     '^/main($|/)',
@@ -50,8 +54,10 @@ const buildAll = async () => {
 
 const pack = async (platform) => {
   return await new Promise((resolve, reject) => {
+    let arch = platform === 'darwin' ? 'x64' : 'ia32'
     packager({
       ...options,
+      arch,
       platform,
       out: `release/${platform}`
     }, (err, buildPath) => {
@@ -82,7 +88,7 @@ const createDmg = (buildPath, cb) => {
     specification: {
       title: 'Getsub',
       contents: [
-        {x: 122, y: 240, type: 'file', path: 'getsub.app'},
+        {x: 122, y: 240, type: 'file', path: 'Getsub.app'},
         {x: 380, y: 240, type: 'link', path: '/Applications'},
         {x: 50, y: 500, type: 'position', path: '.background'},
         {x: 100, y: 500, type: 'position', path: '.DS_Store'},
@@ -102,6 +108,8 @@ const createInstaller = (buildPath, cb) => {
     outputDirectory: 'release/win32',
     authors: 'Alexandre',
     title: 'Getsub',
+    noMsi: true,
+    setupIcon: './statics/icon.ico',
     setupExe: 'setup-getsub.exe',
     exe: 'getsub.exe'
   })

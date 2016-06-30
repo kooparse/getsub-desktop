@@ -1,3 +1,4 @@
+import squirrel from 'electron-squirrel-startup'
 import os from 'os'
 import {app, ipcMain, globalShortcut} from 'electron'
 import * as menu from './menu'
