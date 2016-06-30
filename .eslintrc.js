@@ -12,4 +12,4 @@ module.exports = {
     "padded-blocks": "off",
     "no-undef": "off"
   }
-};
+}
