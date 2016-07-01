@@ -1,9 +1,15 @@
-# Getsub Desktop
-**A better, faster, stronger way to find your subtitles.**
+<h1 align="center">
+  <img src="https://github.com/kooparse/getsub-desktop/blob/master/statics/logo.png?raw=true" alt="Getsub" width="100">
+  <br>
+  Getsub Desktop
+</h1>
+<h4 align="center">
+  A better, faster, stronger way to find your subtitles.
+</h4>
 
 ![preview](https://github.com/kooparse/getsub-desktop/blob/master/statics/preview.png?raw=true)
 
-<br><br>
+<br>
 
 ## What is Getsub?
 Getsub is an app which enables you to download your movie or TV show subtitle with only a **drag & drop**, awesome eh?!
