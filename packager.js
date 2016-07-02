@@ -29,18 +29,22 @@ const options = {
 }
 
 const init = async () => {
-  console.log('Deleting folders...')
-  await del(['dist', 'release'])
+  try {
+    console.log('Deleting folders...')
+    await del(['dist', 'release'])
 
-  console.log('Building main and renderer files...')
-  await buildAll()
+    console.log('Building main and renderer files...')
+    await buildAll()
 
-  console.log('Packaging...')
-  for (let platform of platforms) {
-    await pack(platform)
+    console.log('Packaging...')
+    for (let platform of platforms) {
+      await pack(platform)
+    }
+
+    console.log('Finished!')
+  } catch (err) {
+    return console.error(err)
   }
-
-  console.log('Finished!')
 }
 
 const buildAll = async () => {
